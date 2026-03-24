@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+
+Map<String, IconData> categoryIcons = {
+  "beauty": Icons.brush,
+  "fragrances": Icons.local_florist,
+  "furniture": Icons.chair,
+  "groceries": Icons.shopping_cart,
+  "home-decoration": Icons.home,
+  "kitchen-accessories": Icons.kitchen,
+  "laptops": Icons.laptop,
+  "mens-shirts": Icons.checkroom,
+  "mens-shoes": Icons.directions_walk,
+  "mens-watches": Icons.watch,
+  "mobile-accessories": Icons.phone_android,
+  "motorcycle": Icons.motorcycle,
+  "skin-care": Icons.spa,
+  "smartphones": Icons.smartphone,
+  "sports-accessories": Icons.sports_soccer,
+  "sunglasses": Icons.wb_sunny,
+  "tablets": Icons.tablet,
+  "tops": Icons.style,
+  "vehicle": Icons.directions_car,
+  "womens-bags": Icons.shopping_bag,
+  "womens-dresses": Icons.checkroom,
+  "womens-jewellery": Icons.diamond,
+  "womens-shoes": Icons.hiking,
+  "womens-watches": Icons.watch,
+};
