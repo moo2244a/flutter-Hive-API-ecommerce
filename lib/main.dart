@@ -1,6 +1,6 @@
 import 'package:ecommers_app/app_root.dart/app_root.dart';
 import 'package:ecommers_app/core/utils/ui_constant.dart';
-import 'package:ecommers_app/features/home_screen/data/models/product_model.dart';
+import 'package:ecommers_app/features/home%20screen/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

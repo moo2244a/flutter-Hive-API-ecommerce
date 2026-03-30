@@ -1,6 +1,6 @@
 import 'package:ecommers_app/core/server/server_api.dart';
-import 'package:ecommers_app/features/home_screen/data/models/categorys_model.dart';
-import 'package:ecommers_app/features/home_screen/data/models/product_model.dart';
+import 'package:ecommers_app/features/home%20screen/data/models/categorys_model.dart';
+import 'package:ecommers_app/features/home%20screen/data/models/product_model.dart';
 
 class RepositryHome {
   static Future<List<ProductModel>> getProducts() async {

@@ -1,22 +1,18 @@
-import 'package:ecommers_app/features/home_screen/data/models/product_model.dart';
+import 'package:ecommers_app/core/utils/ui_constant.dart';
+import 'package:ecommers_app/features/card%20screen/presentation/logic/card_provider.dart';
+import 'package:ecommers_app/features/home%20screen/data/models/product_model.dart';
+import 'package:ecommers_app/features/home%20screen/presentation/logic/cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatefulWidget {
   final ProductModel product;
 
   final VoidCallback? onTap;
-  final VoidCallback? iconButtonAdd;
-  final VoidCallback? favoriteIcon;
-  final bool isContainsKey;
-  const ProductCard({
-    super.key,
 
-    this.onTap,
-    this.iconButtonAdd,
-    required this.product,
-    this.favoriteIcon,
-    required this.isContainsKey,
-  });
+  const ProductCard({super.key, this.onTap, required this.product});
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -62,17 +58,34 @@ class _ProductCardState extends State<ProductCard> {
                       child: Padding(
                         padding: const EdgeInsets.all(4),
                         child: FittedBox(
-                          child: GestureDetector(
-                            onTap: widget.favoriteIcon,
-                            child: Icon(
-                              widget.isContainsKey
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              size: 30,
-                              color: widget.isContainsKey
-                                  ? Colors.red
-                                  : colors.onPrimary,
-                            ),
+                          child: BlocBuilder<ProductCubit, ProductState>(
+                            builder: (context, state) {
+                              final boxLove = Hive.box<ProductModel>(
+                                UiConstant.nameBoxLove,
+                              );
+
+                              final isFav = boxLove.values.any(
+                                (p) => p.id == widget.product.id,
+                              );
+
+                              return GestureDetector(
+                                onTap: () async {
+                                  await ProductCubit.get(
+                                    context,
+                                  ).favoriteAction(
+                                    product: widget.product,
+                                    boxLove: boxLove,
+                                  );
+                                },
+                                child: Icon(
+                                  isFav
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  size: 30,
+                                  color: isFav ? Colors.red : colors.onPrimary,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -115,7 +128,12 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                       SizedBox(width: 5),
                       IconButton(
-                        onPressed: widget.iconButtonAdd,
+                        onPressed: () async {
+                          await Provider.of<CardProvider>(
+                            context,
+                            listen: false,
+                          ).addProductCard(product: widget.product);
+                        },
                         icon: Icon(Icons.add),
                       ),
                     ],

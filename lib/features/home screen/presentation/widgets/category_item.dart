@@ -1,5 +1,5 @@
-import 'package:ecommers_app/features/home_screen/data/models/categorys_model.dart';
-import 'package:ecommers_app/features/home_screen/presentation/logic/get_category_icon.dart';
+import 'package:ecommers_app/features/home%20screen/data/models/categorys_model.dart';
+import 'package:ecommers_app/features/home%20screen/presentation/logic/get_category_icon.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {

@@ -1,7 +1,7 @@
-import 'package:ecommers_app/features/home_screen/data/models/categorys_model.dart';
-import 'package:ecommers_app/features/home_screen/data/models/product_model.dart';
-import 'package:ecommers_app/features/home_screen/data/repositry/repositry_home.dart';
-import 'package:ecommers_app/features/home_screen/presentation/widgets/grid_view_products.dart';
+import 'package:ecommers_app/features/home%20screen/data/models/categorys_model.dart';
+import 'package:ecommers_app/features/home%20screen/data/models/product_model.dart';
+import 'package:ecommers_app/features/home%20screen/data/repositry/repositry_home.dart';
+import 'package:ecommers_app/features/home%20screen/presentation/widgets/grid_view_products.dart';
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -19,16 +19,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
     getCategorieOfProduct(widget.categoryModel);
   }
 
-  bool isLoading = false;
   List<ProductModel> allProducts = [];
   Future<void> getCategorieOfProduct(CategoryModel categoryModel) async {
-    isLoading = false;
-    setState(() {});
-
     allProducts = await RepositryHome.getCategorieOfProduct(categoryModel);
-
-    isLoading = true;
-
     setState(() {});
   }
 
@@ -42,14 +35,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
       body: Column(
-        children: [
-          Expanded(
-            child: GridViewProducts(
-              allProducts: allProducts,
-              isLoading: isLoading,
-            ),
-          ),
-        ],
+        children: [Expanded(child: GridViewProducts(allProducts: allProducts))],
       ),
     );
   }

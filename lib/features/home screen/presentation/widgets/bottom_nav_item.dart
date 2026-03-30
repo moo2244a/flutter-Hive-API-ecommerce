@@ -36,7 +36,9 @@ class BottomNavItem extends StatelessWidget {
 
             decoration: BoxDecoration(
               color: isSelect
-                  ? Theme.of(context).colorScheme.onPrimary.withOpacity(0.9)
+                  ? Theme.of(
+                      context,
+                    ).colorScheme.onPrimary.withValues(alpha: .9)
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
 
